@@ -1,0 +1,10 @@
+node_modules/
+
+
+!.gitignore
+!src/
+!webpack.config.js
+!package.json 
+!yarn.lock
+
+store
