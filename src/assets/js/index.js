@@ -1,7 +1,7 @@
 require('bootstrap'); 
 let breakpoints = require('./breakpoints.js');
 import "../scss/main-styles.scss";
-
+let wow = require('wowjs');
 
 let displayInfo = new require('./display-info.js')();
 let displayInfo2 = new require('./display-info.js')();
@@ -11,6 +11,7 @@ require('slick-carousel');
 require('slick-carousel/slick/slick.scss');
 require('slick-carousel/slick/slick-theme.scss');
 
+new wow.WOW().init();
 
 	displayInfo.html('size: ' + breakpoints.onPoint() + '<br>'+ breakpoints.windowSizePx().widthHeight);
 
@@ -120,12 +121,14 @@ console.log(img.parentNode.parentNode.className);
 
 	window.addEventListener('resize', function(){
 
+		resize(img);
+
 		function resizeTimeout(){
 
 			resize(img);
 		}
 
-		setTimeout(resizeTimeout, 300);
+		setTimeout(resizeTimeout, 1000);
 			
 	});	
 
@@ -137,13 +140,15 @@ console.log(img.parentNode.parentNode.className);
 			console.log('in resize');
 
 		let container = img.parentNode;
+		console.log("img", img);
+		console.log("container", container);
 
 // debugger;
 
-// console.log('container.style.width :' + container.style.width);
-// console.log('container.offsetWidth :' + container.offsetWidth);
-// console.log('container.style.height :' + container.style.height);
-// console.log('container.offsetHeight :' + container.offsetHeight);
+console.log('container.style.width :' + container.style.width);
+console.log('container.offsetWidth :' + container.offsetWidth);
+console.log('container.style.height :' + container.style.height);
+console.log('container.offsetHeight :' + container.offsetHeight);
 
 
 // console.log('img.offsetWidth');
@@ -213,6 +218,8 @@ console.log(img.parentNode.parentNode.className);
 let $topMenu = $(".top-header-top-menu__icon");
 $topMenu.on('click', function(event){
 	event.stopPropagation();
+
+	// $topMenu[0].style.transform = "rotate(90deg)";
 
 	$topMenu.toggleClass('active');
 

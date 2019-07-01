@@ -12,4 +12,68 @@ html{
 
 
 
+$base-color: #A02422;
+
+$gray1: #EDEBDF;
+
+$background-color1: #F0EADD;
+
+$dark-bg-1: #5B5B5B;
+$dark-bg-2: #727271;
+$dark-bg-3: #727271;
+
+$light-bg-1: #EDEBDF;
+$light-bg-2: #EDEBDF;
+$light-bg-2: #EDEBDF;
+
+
+a:hover{
+	text-decoration:none;
+}
+
+// *{
+// 	outline: 1px solid red;
+// }
+
+// section img{
+
+// 	width: 100px;
+// }
+
+body{
+
+	position: relative;
+	// background-color: gray;
+}
+
+.btn{
+	
+	background-color: $base-color;
+	border-radius: 0;
+	border: 1px solid $base-color;
+	margin: auto;
+	// display: block;
+	width: auto;
+	padding-left: 35px;
+	padding-right: 35px;
+	color: white;
+}
+
+
+.btn:hover{
+	
+	// transform: scale(1.01);
+	border-color: $base-color;
+	background-color: $background-color1;
+	background-color: #fff;
+	border-color: $base-color;
+	color: $base-color;
+}
+
+ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
 
