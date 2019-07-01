@@ -72,8 +72,8 @@ let images = document.querySelectorAll('img.js-img-cover');
 
 forEach(images, function(img){
 
-console.log('forEach');
-console.log(img.parentNode.parentNode.className);
+// console.log('forEach');
+// console.log(img.parentNode.parentNode.className);
 
 	// let container = img.parentNode;
 
@@ -81,9 +81,9 @@ console.log(img.parentNode.parentNode.className);
 // alert();
 		resize(img);
 
-		console.log('if then');
+// console.log('if then');
 
-		console.log(' --- resize ---');
+// console.log(' --- resize ---');
 		resize(img);
 
 
@@ -95,21 +95,21 @@ console.log(img.parentNode.parentNode.className);
 	// } else img.addEventListener('onload', resize);
 	} else{ 
 		
-		console.log('if else');
+// console.log('if else');
 
 		window.addEventListener('load', function(){
 
 
-			console.log(' ');
-			console.log(' --- on load -----------------------');
+// console.log(' ');
+// console.log(' --- on load -----------------------');
 
-			console.log(img.parentNode.parentNode.className);
+// console.log(img.parentNode.parentNode.className);
 
 			// console.log(img.style);
 
-			console.log(' ');
+// console.log(' ');
 
-			console.log(' --- resize ---');
+// console.log(' --- resize ---');
 			resize(img);
 
 			let onloadClassesOn = img.className.split('js-img-onload-');
@@ -136,19 +136,19 @@ console.log(img.parentNode.parentNode.className);
 
 	function resize(img){
 
-			console.log(' ');
-			console.log('in resize');
+			// console.log(' ');
+			// console.log('in resize');
 
 		let container = img.parentNode;
-		console.log("img", img);
-		console.log("container", container);
+// console.log("img", img);
+// console.log("container", container);
 
 // debugger;
 
-console.log('container.style.width :' + container.style.width);
-console.log('container.offsetWidth :' + container.offsetWidth);
-console.log('container.style.height :' + container.style.height);
-console.log('container.offsetHeight :' + container.offsetHeight);
+// console.log('container.style.width :' + container.style.width);
+// console.log('container.offsetWidth :' + container.offsetWidth);
+// console.log('container.style.height :' + container.style.height);
+// console.log('container.offsetHeight :' + container.offsetHeight);
 
 
 // console.log('img.offsetWidth');
@@ -248,18 +248,18 @@ if(onPoint !=='-sm'){
 
 		case 'sm' :
 
-			$testimonialsSlider.slick({
-		        dots: true,
-		        infinite: true,
-		        speed: 1500,
-		        slidesToShow: 1,
-		        // autoplay: true,
-		        autoplaySpeed: 4000,
-		        // variableWidth: false,
-		        adaptiveHeight: false
-		    });
+			// $testimonialsSlider.slick({
+		 //        dots: true,
+		 //        infinite: true,
+		 //        speed: 1500,
+		 //        slidesToShow: 1,
+		 //        // autoplay: true,
+		 //        autoplaySpeed: 4000,
+		 //        // variableWidth: false,
+		 //        adaptiveHeight: false
+		 //    });
 
-			break;
+			// break;
 
 		case 'md' :	
 
@@ -269,7 +269,7 @@ if(onPoint !=='-sm'){
 		        dots: true,
 		        infinite: true,
 		        speed: 1500,
-		        slidesToShow: 2,
+		        slidesToShow: 1,
 		        // autoplay: true,
 		        autoplaySpeed: 4000,
 		        // variableWidth: false,
@@ -284,7 +284,7 @@ if(onPoint !=='-sm'){
 		        dots: true,
 		        infinite: true,
 		        speed: 1500,
-		        slidesToShow: 3,
+		        slidesToShow: 2,
 		        // autoplay: true,
 		        autoplaySpeed: 4000,
 		        // variableWidth: false,
@@ -308,30 +308,30 @@ $(window).on('breakpoint.changed',
 
 				case 'sm' :
 
-					$testimonialsSlider.slick({
-				        dots: true,
-				        infinite: true,
-				        speed: 1500,
-				        slidesToShow: 1,
-				        // autoplay: true,
-				        autoplaySpeed: 4000,
-				        // variableWidth: false,
-				        adaptiveHeight: false
-				    });
+					// $testimonialsSlider.slick({
+				 //        dots: true,
+				 //        infinite: true,
+				 //        speed: 1500,
+				 //        slidesToShow: 1,
+				 //        // autoplay: true,
+				 //        autoplaySpeed: 4000,
+				 //        // variableWidth: false,
+				 //        adaptiveHeight: false
+				 //    });
 
-					break;
+					// break;
 
 				case 'md' :	
 
 				case 'lg' :	
 
 // alert('on ' + breakpoints.breakpoint);
-					$testimonialsSlider.slick('unslick');
+					// $testimonialsSlider.slick('unslick');
 					$testimonialsSlider.slick({
 				        dots: true,
 				        infinite: true,
 				        speed: 1500,
-				        slidesToShow: 2,
+				        slidesToShow: 1,
 				        // autoplay: true,
 				        autoplaySpeed: 4000,
 				        // variableWidth: false,
@@ -347,7 +347,7 @@ $(window).on('breakpoint.changed',
 				        dots: true,
 				        infinite: true,
 				        speed: 1500,
-				        slidesToShow: 3,
+				        slidesToShow: 2,
 				        // autoplay: true,
 				        autoplaySpeed: 4000,
 				        // variableWidth: false,
