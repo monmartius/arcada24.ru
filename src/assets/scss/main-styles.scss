@@ -41,6 +41,84 @@
 	transition-duration: .3s;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+// [class*="animations-first-screen-"]{
+
+// 	opacity: 0;
+// }
+
+// [class^="areas-"]
+
+
+
+.animated{
+
+	animation-delay: .8s;	
+	animation-duration: 1s;
+}
+
+.areas-of-production{
+	animation-duration: 0s;
+	animation-delay: 0s;
+}
+
+.main-promo [class^="main-promo-slider-slide-text-"] {
+	animation-duration: 5s;
+	animation-delay: 0s;
+}
+
+
+.arcada-company-advantages__title{
+	animation-duration: 3s;
+	animation-delay: .5s;
+}
+
+.arcada-company-advantages-list-experience{
+
+	animation-delay: .5s;
+}
+.arcada-company-advantages-list-qualitiy{
+
+	animation-delay: 1s;
+}
+.arcada-company-advantages-list-prices{
+
+	animation-delay: 1.5s;
+}
+
+.arcada-company-advantages__text{
+	animation-delay: 2.5s;	
+}
+
+.arcada-company-sevices__title{
+	
+
+	animation-delay: .5s;	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .top-header{
 
 	position: absolute;
@@ -278,6 +356,10 @@
 	height: 100%;
 	width: 100%;
 
+	background-image: url(../images/main-promo.jpg);
+	background-size: cover;
+	background-position: 50% 50%;
+
 	img{
 		position: absolute;
 		top: 50%;
@@ -287,8 +369,8 @@
 		transform: translateY(-55%);
 		// transform: translateX(-5%);
 		// transform: scale(1.05);
-		opacity: 0;
-		transition: opacity .5s, transform 0s;
+		// opacity: 0;
+		// transition: opacity .5s, transform 0s;
 		// transition-duration: 1.5s;
 		// min-width: 10%;
 		height: 100%;
@@ -299,10 +381,10 @@
 
 
 .main-promo-onload{
-		opacity: 1;
-		transform: scale(1);
-		top: 50%;
-		transform: translateY(-50%);
+		// opacity: 1;
+		// transform: scale(1);
+		// top: 50%;
+		// transform: translateY(-50%);
 	}
 
 
@@ -2820,8 +2902,10 @@ section.production-item.production-eurowindows .container .row div.production-eu
 background-image: url(../images/wood-background.jpg);
 
 
-		top: 30%;
-		bottom: 30%;
+		top: 0%;
+		bottom: 0%;
+		// top: 30%;
+		// bottom: 30%;
 		left: 0;
 		width: 100%;
 		// height: 100%;
@@ -2843,7 +2927,7 @@ background-image: url(../images/wood-background.jpg);
 		left: 0;
 		width: 100%;
 		// height: 100%;
-		background-color: rgba(0, 0, 0, .3);
+		background-color: rgba(0, 0, 0, .7);
 		z-index: 10;
 		transition: .5s;
 	}
@@ -3129,6 +3213,7 @@ footer.footer{
 		display: inline-block;
 	}
 }
+
 
 
 .footer-info{

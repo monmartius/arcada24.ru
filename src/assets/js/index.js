@@ -39,6 +39,11 @@ new wow.WOW().init();
 	});
 
 
+// window.addEventListener('load', function(){
+// let $animationsFirstScreenElems = $('[class*="animations-first-screen-"]');
+// alert($animationsFirstScreenElems.length );
+// });
+
 	// setInterval(function(){
 
 	// 	displayInfo2.html(timer);		
@@ -98,7 +103,7 @@ forEach(images, function(img){
 // console.log('if else');
 
 		window.addEventListener('load', function(){
-
+animations-first-screen-
 
 // console.log(' ');
 // console.log(' --- on load -----------------------');
@@ -238,9 +243,14 @@ let onPoint = breakpoints.onPoint();
 
 // alert(onPoint);
 
+
 let $testimonialsSlider = $('.testimonials-slider');
 
-// alert(onPoint);
+
+
+
+
+
 
 if(onPoint !=='-sm'){
 
@@ -265,6 +275,8 @@ if(onPoint !=='-sm'){
 
 		case 'lg' :	
 
+			$testimonialsSlider.data('slickSliderOn', true);
+
 			$testimonialsSlider.slick({
 		        dots: true,
 		        infinite: true,
@@ -280,6 +292,7 @@ if(onPoint !=='-sm'){
 
 		case 'xl' :	
 
+			$testimonialsSlider.data('slickSliderOn', true);
 			$testimonialsSlider.slick({
 		        dots: true,
 		        infinite: true,
@@ -293,7 +306,13 @@ if(onPoint !=='-sm'){
 
 
 	}
+
 }
+else{
+
+	$testimonialsSlider.data('slickSliderOn', false);
+}
+
 
 
 $(window).on('breakpoint.changed', 
@@ -326,7 +345,12 @@ $(window).on('breakpoint.changed',
 				case 'lg' :	
 
 // alert('on ' + breakpoints.breakpoint);
-					// $testimonialsSlider.slick('unslick');
+
+					if($testimonialsSlider.data('slickSliderOn')){
+
+						$testimonialsSlider.slick('unslick');
+					}
+
 					$testimonialsSlider.slick({
 				        dots: true,
 				        infinite: true,
@@ -338,11 +362,18 @@ $(window).on('breakpoint.changed',
 				        adaptiveHeight: false
 				    });
 
+					$testimonialsSlider.data('slickSliderOn', true);
+
 					break;
+
 					
 				case 'xl' :	
 
-					$testimonialsSlider.slick('unslick');
+					if($testimonialsSlider.data('slickSliderOn')){
+
+						$testimonialsSlider.slick('unslick');
+					}
+
 					$testimonialsSlider.slick({
 				        dots: true,
 				        infinite: true,
@@ -354,6 +385,7 @@ $(window).on('breakpoint.changed',
 				        adaptiveHeight: false
 				    });
 
+					$testimonialsSlider.data('slickSliderOn', true);
 
 			}
 
@@ -363,8 +395,11 @@ $(window).on('breakpoint.changed',
 
 			if(breakpoints.breakpoint === '-sm'){
 
+				if($testimonialsSlider.data('slickSliderOn')){
 
-				$testimonialsSlider.slick('unslick');
+					$testimonialsSlider.slick('unslick');
+					$testimonialsSlider.data('slickSliderOn', false);
+				}
 			}
 		}
 
