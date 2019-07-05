@@ -60,51 +60,55 @@
 // [class^="areas-"]
 
 
+.animated-opacity{
+
+	visibility: hidden;
+}
 
 .animated{
 
-	animation-delay: .8s;	
-	animation-duration: 1s;
+	animation-delay: .1s;	
+	animation-duration: .5s;
 }
 
-.areas-of-production{
-	animation-duration: 0s;
-	animation-delay: 0s;
-}
+// .areas-of-production{
+// 	animation-duration: 0s;
+// 	animation-delay: 0s;
+// }
 
-.main-promo [class^="main-promo-slider-slide-text-"] {
-	animation-duration: 5s;
-	animation-delay: 0s;
-}
+// .main-promo [class^="main-promo-slider-slide-text-"] {
+// 	animation-duration: 5s;
+// 	animation-delay: 0s;
+// }
 
 
-.arcada-company-advantages__title{
-	animation-duration: 3s;
-	animation-delay: .5s;
-}
+// .arcada-company-advantages__title{
+// 	animation-duration: 2s;
+// 	animation-delay: .5s;
+// }
 
-.arcada-company-advantages-list-experience{
+// .arcada-company-advantages-list-experience{
 
-	animation-delay: .5s;
-}
-.arcada-company-advantages-list-qualitiy{
+// 	animation-delay: .7s;
+// }
+// .arcada-company-advantages-list-qualitiy{
 
-	animation-delay: 1s;
-}
-.arcada-company-advantages-list-prices{
+// 	animation-delay: .7s;
+// }
+// .arcada-company-advantages-list-prices{
 
-	animation-delay: 1.5s;
-}
+// 	animation-delay: .7s;
+// }
 
-.arcada-company-advantages__text{
-	animation-delay: 2.5s;	
-}
+// .arcada-company-advantages__text{
+// 	animation-delay: .7s;	
+// }
 
-.arcada-company-sevices__title{
+// .arcada-company-sevices__title{
 	
 
-	animation-delay: .5s;	
-}
+// 	animation-delay: .7s;	
+// }
 
 
 
@@ -347,6 +351,7 @@
 
 .main-promo-slider-slide-background{
 
+
 	background-color: $base-color/1.5;
 	display: flex;
 	justify-content: center;
@@ -359,6 +364,18 @@
 	background-image: url(../images/main-promo.jpg);
 	background-size: cover;
 	background-position: 50% 50%;
+
+	&:before{
+
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0, 0, 0, .3);
+		z-index: 10;
+		position: absolute;
+		content: " ";
+	}
 
 	img{
 		position: absolute;
@@ -496,10 +513,17 @@
 	}	
 }
 
+.section-title-base{
+	&
+	:before, &:after{
+		background-image: url(../images/line1.svg);
+	}
+}
+
 .section-title-gray{
 	&:before, &:after{
 		background-image: url(../images/lineCCCCCC.svg);
-	}
+	}	
 }
 
 
@@ -795,8 +819,8 @@
 	font-size: calc(15px + 1vw * 1.2 - 1vh * .1);
 	line-height: 135%;
 	padding: calc(24px + 1vw * 1.5 - 1vh * .1);
-	padding-bottom: 0;
-	padding-top: 4vmax;
+	padding-bottom: 4vmax; 
+	padding-top: 0;
 
 	text-align: center;
 
@@ -1392,7 +1416,7 @@ a.our-production-item__additional-text:hover{
 	height: 155px;
 	overflow: hidden;
 
-background-image: url(../images/wood-background.jpg);
+background-image: url(../images/wood-background-light.jpg);
 background-attachment: fixed;
 width: 100%;
 	@include media-breakpoint-up(sm){
@@ -1560,7 +1584,16 @@ width: 100%;
 	position: relative;
 
 	// text-align: left;
-	text-transform: uppercase;
+	// text-transform: uppercase;
+	
+
+	@media (max-width: map-get($grid-breakpoints, sm) - 1px){
+
+		font-size: calc(13px + 1vw * 1.02);	
+		
+	}
+
+
 	font-size: calc(10px + 1vw * 1.02);	
 	
 	// list-style-type: circle;
@@ -1572,7 +1605,7 @@ width: 100%;
 
 		margin: 15px;
 		margin-top: 20px;
-		font-weight: bold;
+		// font-weight: bold;
 
 
 		&:after{
@@ -1783,7 +1816,14 @@ width: 100%;
 
 .calculate-btn-wrapper{
 
-	padding: 15px !important;	
+	margin-top: 30px !important;	
+	margin-bottom: 30px !important;	
+	@include media-breakpoint-up(sm){
+
+		padding: 15px !important;	
+		padding: 0px !important;	
+		margin-bottom: 30px !important;	
+	}
 }
 
 
@@ -2473,7 +2513,7 @@ section.production-item.production-eurowindows .container .row div.production-eu
 
 	padding-top: 60px;
 	padding-bottom: 60px;
-	background-image: url(../images/wood-background.jpg);
+	background-image: url(../images/wood-background-light.jpg);
 	background-attachment: fixed;
 }
 
@@ -2555,6 +2595,11 @@ section.production-item.production-eurowindows .container .row div.production-eu
 	background-image: url(../images/our-production-timber-background.jpg);
 }
 
+.our-production-timber > .container > .row > a{
+	position: relative;
+	z-index: 201;
+}
+
 .our-production-timber__title{
 
 	color: $base-color;
@@ -2565,7 +2610,7 @@ section.production-item.production-eurowindows .container .row div.production-eu
 	padding-bottom: 20px;
 	
 	position: relative;
-	z-index: 101;
+	z-index: 201;
 
 	font-size: calc(20px + 1vw * 1.1 - 1vh * .1);
 
@@ -2579,6 +2624,8 @@ section.production-item.production-eurowindows .container .row div.production-eu
 
 .our-production-timber__image{
 
+	position: relative;
+	z-index: 10;
 	width: 100%;
 	transition: 1s;
 	order: 2;
@@ -2899,7 +2946,7 @@ section.production-item.production-eurowindows .container .row div.production-eu
 		position: absolute;
 
 
-background-image: url(../images/wood-background.jpg);
+background-image: url(../images/wood-background-light.jpg);
 
 
 		top: 0%;
@@ -2973,10 +3020,10 @@ background-image: url(../images/wood-background.jpg);
 	// 	outline: 1px solid #fff;
 	// }
 
-	background-color: $gray1;
+	background-color: $light-bg-2;
 
-	background-image: url(../images/wood-background.jpg);
-	color: #fff;
+	// background-image: url(../images/wood-background.jpg);
+	// color: #fff;
 
 	.slick-arrow{
 		
@@ -2995,6 +3042,8 @@ background-image: url(../images/wood-background.jpg);
 			font-size: 80px;
 			width: 40px;
 			height: 40px;
+
+			color: $base-color;
 		}
 
 	}
@@ -3024,18 +3073,23 @@ background-image: url(../images/wood-background.jpg);
 
 .testimonials-slider__container{
 
+	@include media-breakpoint-up(sm){
 
-	padding: 60px;
+		padding: 30px 60px 0 ;
+	}
 }
 
 
 .testimonials-slider-slide{
 
 	// display: flex;
-	
+	color: #fff;
+		background-image: url(../images/wood-background-light.jpg);
+		padding: 15px;
+
 	@include media-breakpoint-up(sm){
 
-		background-image: url(../images/wood-background.jpg);
+		background-image: url(../images/wood-background-light.jpg);
 		padding: 30px;
 	}
 }
@@ -3047,6 +3101,7 @@ background-image: url(../images/wood-background.jpg);
 	font-size: 35px;
 	text-align: center;
 	margin-bottom: 20px;
+	padding-top: 30px;
 }
 
 .testimonials-slider-slide-person__photo{
@@ -3075,34 +3130,72 @@ background-image: url(../images/wood-background.jpg);
 
 
 @include media-breakpoint-up(sm){
+
 	.testimonials-slider{
 		// height: 100%;
-		display: flex;
+		// display: flex!important;
 	}
 	.testimonials-slider > .slick-list.draggable{
 
+		// display: flex!important;
 		height: 100%;
+		overflow: hidden; 
 	}
-	.testimonials-slider > .slick-list.draggable>.slick-track{
+	.testimonials-slider > .slick-list.draggable > .slick-track{
 
+		// opacity: 0;
+		display: flex!important;
 		height: 100%;
+		align-content: stretch;
+		align-items: stretch;
+		overflow: hidden; 
+		// min-height: 1px;
+		// display: table;
 	}
-	.testimonials-slider > .slick-list.draggable>.slick-track>.slick-slide{
+	.testimonials-slider > .slick-list.draggable > .slick-track > .slick-slide {
 
-		height: 100%;
+		// overflow: hidden; 
+		// transform: rotate(30deg);
+		// display: flex!important;
+		// border: 30px solid red;
+		height: auto!important;
+		align-self: stretch;
+		flex: 1 0 auto;
+		float: none;
+		display: block!important;
+		
 	}
-	.testimonials-slider > .slick-list.draggable>.slick-track>.slick-slide>div{
+	.testimonials-slider > .slick-list.draggable > .slick-track>.slick-slide > div{
+		// overflow: hidden; 
 		
 		height: 100%;
 	}
-	.testimonials-slider > .slick-list.draggable>.slick-track>.slick-slide>div>.testimonials-slider-slide{
+	.testimonials-slider > .slick-list.draggable > .slick-track>.slick-slide > div > .testimonials-slider-slide{
 
 		height: 100%;
+		// display: flex;
+		// background-color: red;
 	}
 
 }
 
 
+
+.btn.read_more{
+
+	display: inline-block;
+	// width: auto;
+	// margin: 30px 0;
+	// float: right;
+}
+
+.btn-read_more-wrapper{
+	width: 100%;
+	// padding: 0px 0;
+	text-align: center;
+	margin-top: 30px;
+	display: block;
+}
 
 
 

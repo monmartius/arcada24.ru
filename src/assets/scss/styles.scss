@@ -1,6 +1,6 @@
 @import "~bootstrap/scss/bootstrap.scss";
 // @import url('https://fonts.googleapis.com/css?family=Montserrat');
-// @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
 
 
 
@@ -9,8 +9,11 @@ html{
 
 	font-family: 'Noto Sans', sans-serif;
 }
+html, body{
 
-
+  width: 100%;
+  min-height: 100%;
+}
 
 $base-color: #A02422;
 
@@ -77,3 +80,8 @@ ul{
 }
 
 
+.small-text{
+
+	font-size: 70%;
+	// line-height: 100%;
+}

@@ -11,6 +11,27 @@ require('slick-carousel');
 require('slick-carousel/slick/slick.scss');
 require('slick-carousel/slick/slick-theme.scss');
 
+
+
+
+let imageOnload = document.querySelector('#image-onload');
+
+imageOnload.addEventListener('load', () => {
+
+	console.log('image.load');
+	
+});
+
+window.addEventListener('load', ()=>{
+
+	console.log('window.load');
+});
+
+
+
+
+
+
 new wow.WOW().init();
 
 	displayInfo.html('size: ' + breakpoints.onPoint() + '<br>'+ breakpoints.windowSizePx().widthHeight);
@@ -103,7 +124,7 @@ forEach(images, function(img){
 // console.log('if else');
 
 		window.addEventListener('load', function(){
-animations-first-screen-
+
 
 // console.log(' ');
 // console.log(' --- on load -----------------------');
@@ -278,7 +299,7 @@ if(onPoint !=='-sm'){
 			$testimonialsSlider.data('slickSliderOn', true);
 
 			$testimonialsSlider.slick({
-		        dots: true,
+		        dots: false,
 		        infinite: true,
 		        speed: 1500,
 		        slidesToShow: 1,
@@ -318,6 +339,9 @@ else{
 $(window).on('breakpoint.changed', 
 
 	()=> {
+
+		readmoreBtnRemove();
+		readmoreBtnInit();
 
 
 		if(breakpoints.breakpoint != '-sm'){
@@ -404,3 +428,80 @@ $(window).on('breakpoint.changed',
 		}
 
 	});
+
+
+document.addEventListener('DOMContentLoaded', ()=> {
+
+	let $animatedOpacityElems = $('.animated-opacity')
+		.removeClass('animated-opacity')
+		.addClass('animated');
+});
+
+readmoreBtnInit();
+
+function readmoreBtnInit(){
+
+
+	let $sliderTextElements = $('.testimonials-slider-slide__text');
+
+
+	$sliderTextElements.each(function(){
+
+		var textFull = $(this).html();
+
+		var textElipsis = textFull;
+
+		if( textElipsis.length > 200 )
+		{
+			textElipsis = textElipsis.substring(0, 200) + '...';
+
+			$(this).html(textElipsis + '<dic class = "btn-read_more-wrapper"><div class="btn read_more">читать полностью &rarr;</div></div>' );
+		}
+
+		$(this).find('.btn-read_more-wrapper').append('<div class="full_text" style="display: none;">' + textFull + '</div>');
+	});
+	// console.log($(".btn.read_more"))	;
+
+console.log('===================== ON =================');
+
+	$(".btn.read_more").each(function (){
+
+		// $(this).on('click', $readmoreBtnOnClick);
+		this.addEventListener('click', $readmoreBtnOnClick);
+		// $(this).on('click', );
+// console.log($readmoreBtnOnClick);
+// console.log('$(".btn.read_more").on("click", $readmoreBtnOnClick);');
+// console.log(this);
+
+		}
+	);
+
+	function $readmoreBtnOnClick() {
+// alert();
+		$(this)
+			.closest('.testimonials-slider-slide__text')
+			// .find('.testimonials-slider-slide__text')
+			.html(
+				$(this).parent()
+				.find(".full_text")
+				.html() 
+			);
+	}
+}
+
+
+
+function readmoreBtnRemove(){
+
+	let $sliderTextElements = $('.testimonials-slider-slide__text');
+
+	$sliderTextElements.each(function(){
+
+		let $sliderTextElement = $(this);
+
+		let $textFull = $('.full_text', $sliderTextElement).html();
+
+		$sliderTextElement.html($textFull);
+
+	});
+}
