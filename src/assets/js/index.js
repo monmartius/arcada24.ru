@@ -60,17 +60,6 @@ new wow.WOW().init();
 	});
 
 
-// window.addEventListener('load', function(){
-// let $animationsFirstScreenElems = $('[class*="animations-first-screen-"]');
-// alert($animationsFirstScreenElems.length );
-// });
-
-	// setInterval(function(){
-
-	// 	displayInfo2.html(timer);		
-	// 	// displayInfo2.html(displayInfo2 === displayInfo);		
-	// }, 1000 )
-
 
 	$(window).on('resize', function(){
 
@@ -94,48 +83,27 @@ function forEach(obj, func){
 
 let images = document.querySelectorAll('img.js-img-cover');
 
-// console.log(images);
+
 
 forEach(images, function(img){
 
-// console.log('forEach');
-// console.log(img.parentNode.parentNode.className);
-
-	// let container = img.parentNode;
-
 	if (img.complete) {
-// alert();
+
 		resize(img);
-
-// console.log('if then');
-
-// console.log(' --- resize ---');
-		resize(img);
-
 
 
 		let onloadClassesOn = img.className.split('js-img-onload-');
 
 		img.className = onloadClassesOn.join(' ');
 
-	// } else img.addEventListener('onload', resize);
+
 	} else{ 
 		
-// console.log('if else');
+
 
 		window.addEventListener('load', function(){
 
 
-// console.log(' ');
-// console.log(' --- on load -----------------------');
-
-// console.log(img.parentNode.parentNode.className);
-
-			// console.log(img.style);
-
-// console.log(' ');
-
-// console.log(' --- resize ---');
 			resize(img);
 
 			let onloadClassesOn = img.className.split('js-img-onload-');
@@ -160,92 +128,130 @@ forEach(images, function(img){
 
 
 
-	function resize(img){
-
-			// console.log(' ');
-			// console.log('in resize');
-
-		let container = img.parentNode;
-// console.log("img", img);
-// console.log("container", container);
-
-// debugger;
-
-// console.log('container.style.width :' + container.style.width);
-// console.log('container.offsetWidth :' + container.offsetWidth);
-// console.log('container.style.height :' + container.style.height);
-// console.log('container.offsetHeight :' + container.offsetHeight);
-
-
-// console.log('img.offsetWidth');
-// console.log(img.offsetWidth);
-// console.log('img.offsetHeight');
-// console.log(img.offsetHeight);
-
-
-// console.log('container.offsetWidth / container.offsetHeight');
-// console.log( container.offsetWidth + ' / ' + container.offsetHeight);
-// console.log( container.offsetWidth / container.offsetHeight);
-// console.log('(img.offsetWidth / img.offsetHeight)');
-// console.log(img.offsetWidth + ' / ' + img.offsetHeight);
-// console.log(img.offsetWidth / img.offsetHeight);
-
-		if ((container.offsetWidth / container.offsetHeight) 
-        	< (img.offsetWidth / img.offsetHeight)) {
-
-// console.log("img.style.width = 'auto';");
-// console.log("img.style.height ='100%';");
-
-			img.style.width = 'auto';
-			img.style.height ='100%';
-
-			// container.style.positon = 'relative';
-
-
-			// img.style.position = 'absolute';
-
-			// container.style.top = "" + "400px";
-
-
-			// console.log(img.parentNode.parentNode.className);
-
-			// console.log(img.style.width);
-			// console.log(img.offsetWidth);
-			// console.log(img.style.height);
-			// console.log(img.offsetHeight);
-
-        } else{
-
-// console.log("img.style.width = '100%';");
-// console.log("img.style.height = 'auto';");
-            img.style.width = '100%';
-            img.style.height = 'auto';
-
-			// container.style.positon = 'relative';
-
-
-			// img.style.position = 'absolute';
-
-			// container.style.left = "" + "400px";
-
-
-			// console.log(img.style.width);
-			// console.log(img.offsetWidth);
-			// console.log(img.style.height);
-			// console.log(img.offsetHeight);
-
-        }
-
-        return;
-	}
-
 });
+
+
+
+function resize(img){
+
+
+	let container = img.parentNode;
+
+
+	if ((container.offsetWidth / container.offsetHeight) 
+    	< (img.offsetWidth / img.offsetHeight)) {
+
+
+
+		img.style.width = 'auto';
+		img.style.height ='100%';
+
+
+
+    } else{
+
+        img.style.width = '100%';
+        img.style.height = 'auto';
+
+    }
+
+    return;
+}
+
+// class NodesArray 
+
+class NodeArray extends Array {
+
+    constructor(nodeList) { 
+
+    	super(); 
+
+        for(let i = 0; i < nodeList.length; i++){
+
+        	this[i] = nodeList[i];
+        }
+    }
+
+    last() {
+        return this[this.length - 1];
+    }
+}
+
+
+
+function querySelectorAllToArray(selector) {
+
+	let nodeList = document.querySelector('body').querySelectorAll(selector);
+
+	let nodeArray = new NodeArray(nodeList);
+
+	return nodeArray;
+}
+
+
+
+
+document.addEventListener('DOMContentLoaded', ()=> {
+	
+	let firstLoadImages = querySelectorAllToArray('img[data-src-first]');
+	let otherLoadImages = querySelectorAllToArray('img[data-src-other]');
+
+	firstLoadImages.forEach((image) => {
+
+		image.src = image.getAttribute('data-src-first');
+
+		console.log("img.className", image.className.indexOf('js-img-cover'));
+
+		if (image.className.indexOf('js-img-cover') + 1){
+
+			image.addEventListener('load', ()=>{
+
+				resize(image);
+			});
+		}
+
+	});
+
+	otherLoadImages.forEach((image) => {
+
+		image.src = image.getAttribute('data-src-other');
+
+
+	});
+	
+
+	// let imagesElements = document.querySelectorAll('img[data-src]');
+
+
+	// console.log("imagesElements", imagesElements);
+
+	// console.log("imagesElements", imagesElements.querySelectorAll('img[data-firstload]'));
+
+	// let $animatedOpacityElems = $('.animated-opacity')
+	// 	.removeClass('animated-opacity')
+	// 	.addClass('animated');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 let $topMenu = $(".top-header-top-menu__icon");
 $topMenu.on('click', function(event){
 	event.stopPropagation();
-
-	// $topMenu[0].style.transform = "rotate(90deg)";
 
 	$topMenu.toggleClass('active');
 
@@ -260,9 +266,23 @@ $(document).on('click', function(e){
 });
 
 
-let onPoint = breakpoints.onPoint();
 
-// alert(onPoint);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let onPoint = breakpoints.onPoint();
 
 
 let $testimonialsSlider = $('.testimonials-slider');
@@ -430,12 +450,6 @@ $(window).on('breakpoint.changed',
 	});
 
 
-document.addEventListener('DOMContentLoaded', ()=> {
-
-	let $animatedOpacityElems = $('.animated-opacity')
-		.removeClass('animated-opacity')
-		.addClass('animated');
-});
 
 readmoreBtnInit();
 
@@ -460,27 +474,20 @@ function readmoreBtnInit(){
 
 		$(this).find('.btn-read_more-wrapper').append('<div class="full_text" style="display: none;">' + textFull + '</div>');
 	});
-	// console.log($(".btn.read_more"))	;
-
-console.log('===================== ON =================');
 
 	$(".btn.read_more").each(function (){
 
-		// $(this).on('click', $readmoreBtnOnClick);
+
 		this.addEventListener('click', $readmoreBtnOnClick);
-		// $(this).on('click', );
-// console.log($readmoreBtnOnClick);
-// console.log('$(".btn.read_more").on("click", $readmoreBtnOnClick);');
-// console.log(this);
 
 		}
 	);
 
 	function $readmoreBtnOnClick() {
-// alert();
+
 		$(this)
 			.closest('.testimonials-slider-slide__text')
-			// .find('.testimonials-slider-slide__text')
+
 			.html(
 				$(this).parent()
 				.find(".full_text")
